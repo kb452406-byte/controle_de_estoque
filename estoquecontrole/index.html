@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Meu Estoque</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+  <!-- MENU LATERAL -->
+  <aside class="sidebar">
+    <h2>MEU ESTOQUE</h2>
+    <ul>
+      <li class="active">Meu Estoque</li>
+      <li>Perfumes</li>
+      <li>Indiárias</li>
+      <li>Cestinhas</li>
+      <li>Óleos</li>
+    </ul>
+
+    <button class="btn-lateral">+ Novo Perfume</button>
+  </aside>
+
+  <!-- CONTEÚDO -->
+  <main class="content">
+
+    <header>
+      <h1>MEU ESTOQUE</h1>
+      <input type="text" placeholder="Buscar..." id="buscar">
+    </header>
+
+    <!-- BOTÕES -->
+    <div class="buttons">
+      <button class="btn verde">Adicionar Perfume</button>
+      <button class="btn rosa">Adicionar Produto</button>
+      <button class="btn bege">Adicionar Item</button>
+    </div>
+
+    <!-- TABELA -->
+    <table>
+      <thead>
+        <tr>
+          <th>Categoria</th>
+          <th>Nome</th>
+          <th>Qtd</th>
+          <th>Tipo</th>
+          <th>Valor</th>
+        </tr>
+      </thead>
+      <tbody id="tabela">
+      </tbody>
+    </table>
+
+    <!-- ANOTAÇÕES -->
+    <div class="notas">
+      <h3>Anotações Rápidas</h3>
+      <textarea placeholder="Escreva aqui..."></textarea>
+    </div>
+
+  </main>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
