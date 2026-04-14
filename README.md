@@ -25,6 +25,7 @@ Backend: JAVA SCRIPT
 Banco de Dados: PHP
 
 👥 Equipe
+
 Karine Barbosa
 
 Nicolas Gabriel 
