@@ -30,7 +30,7 @@
       padding: 20px;
     }
 
-    /* Subtle grain texture overlay */
+    /* textura subtitulo */
     body::before {
       content: '';
       position: fixed;
@@ -108,7 +108,7 @@
       opacity: 0.5;
     }
 
-    /* ── MAIN ── */
+    
     .main {
       padding: 48px 52px;
       display: flex;
@@ -136,7 +136,7 @@
       letter-spacing: 0.03em;
     }
 
-    /* ── FORM ── */
+    
     .form-group {
       margin-bottom: 20px;
     }
@@ -173,7 +173,7 @@
 
     input::placeholder { color: #b0a898; }
 
-    /* ── REMEMBER + FORGOT ── */
+    
     .form-extras {
       display: flex;
       align-items: center;
@@ -287,7 +287,7 @@
 
 <div class="wrapper">
 
-  <!-- SIDEBAR (decorativa, espelhando o app) -->
+
   <aside class="sidebar">
     <div class="sidebar-title">Meu Estoque</div>
     <div class="sidebar-item active">Meu Estoque</div>
@@ -350,7 +350,7 @@
       return;
     }
     showMsg('Entrando no sistema…', 'success');
-    // Aqui você conecta com sua lógica de autenticação
+   
   }
 
   function handleRegister() {
@@ -365,7 +365,7 @@
     showMsg('Enviaremos as instruções para o seu e-mail.', 'success');
   }
 
-  // Enter key submits
+  
   document.getElementById('password').addEventListener('keydown', e => {
     if (e.key === 'Enter') handleLogin();
   });
