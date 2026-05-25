@@ -71,20 +71,24 @@ body {
 /* HEADER */
 header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  flex-direction: column;
+  margin-top: 20px;
 }
 
 header input {
   padding: 8px;
   border-radius: 5px;
   border: 1px solid #aaa;
+  margin-bottom: 40px;
 }
 
 /* BUSCAR PRODUTO */
 #buscar {
   width: 400px;
-  height: 40px;
+  height: 25px;
+  border-radius: 20px;
+  border: 1px solid #aaa;
 }
 
 /* BOTÕES */
@@ -96,8 +100,8 @@ header input {
 }
 
 .btn {
-  width: 500px;
-  height: 60px;
+  width: 27vw;
+  height: 50px;
   font-size: 18px;
   padding: 10px 15px;
   border: none;
@@ -112,7 +116,7 @@ header input {
 
 /* TABELA */
 table {
-  width: 100%;
+  width: 99.2%;
   height: 40%;
   border-collapse: collapse;
   background: rgba(255,255,255,0.6);
@@ -146,4 +150,10 @@ th {
   border-radius: 6px;
   border: 1px solid #aaa;
   font-size: 22px;
+}
+
+.input-table {
+  padding: 8px;
+  width: 20px;
+  all: unset;
 }

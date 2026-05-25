@@ -1,13 +1,16 @@
-function adicionarItem(categoria, nome, qtd, tipo, valor) {
+function adicionarItem(categoria, qtd, tipo, valor) {
   const tabela = document.getElementById("tabela");
 
   const linha = document.createElement("tr");
 
   linha.innerHTML = `
     <td>${categoria}</td>
-    <td>${nome}</td>
-    <td>${qtd}</td>
-    <td>${tipo}</td>
+    <td>
+      <input class="input-table" type="number" value="${qtd}" id="qtd">
+    </td>
+    <td>
+      <input class="input-table" type="text" value="${tipo}" id="tipo">
+    </td>
     <td>${valor}</td>
   `;
 
@@ -15,7 +18,7 @@ function adicionarItem(categoria, nome, qtd, tipo, valor) {
 }
 
 /* categorias */
-adicionarItem("Óleos", "Perfume 1", 30, "ML", "R$");
-adicionarItem("Perfumes", "Perfume 2", 50, "ML", "R$");
-adicionarItem("Indústrias", "Perfume 3", 20, "ML", "R$");
-adicionarItem("Cestinhas", "Perfume 4", 20, "ML", "R$");
+adicionarItem("Óleos", 30, "ML", "R$");
+adicionarItem("Perfumes", 50, "ML", "R$");
+adicionarItem("Indústrias", 20, "ML", "R$");
+adicionarItem("Cestinhas", 20, "ML", "R$");
