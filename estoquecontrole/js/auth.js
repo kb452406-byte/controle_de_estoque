@@ -1,44 +1,67 @@
-// Simulação de Banco de Dados de Usuários
-const usuariosMock = [
-  { username: 'admin', password: 'admin123', nome: 'Administrador' },
-  { username: 'usuario', password: '123456', nome: 'Usuário Padrão' }
-];
+// ─── Configuração ────────────────────────────────────────────────────────────
+var API_BASE = 'http://localhost:8080/backend/api';
+// ─── Login ────────────────────────────────────────────────────────────────────
+async function login(username, password) {
+  try {
+    const res = await fetch(`${API_BASE}/auth.php`, {
+      method: 'POST',
+      credentials: 'include', // envia cookie de sessão
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ acao: 'login', username, password }),
+    });
 
-// Função para validar login
-function login(username, password) {
-  // Procura o usuário no "banco de dados"
-  const user = usuariosMock.find(u => u.username === username && u.password === password);
+    const json = await res.json();
 
-  if (user) {
-    // Se encontrar, salva os dados no sessionStorage (simulando um token/sessão)
-    // Removemos a senha por segurança, armazenando apenas o username e nome
-    const { password, ...userData } = user;
-    sessionStorage.setItem('authUser', JSON.stringify(userData));
-    return true;
+    if (json.ok) {
+      // Guarda nome do usuário localmente só para exibição
+      sessionStorage.setItem('authUser', JSON.stringify(json.data));
+      return true;
+    }
+    return false;
+  } catch (e) {
+    console.error('Erro de conexão ao fazer login:', e);
+    return false;
   }
-  return false;
 }
 
-// Função para verificar se está logado e redirecionar se não estiver
-function verificarAutenticacao() {
-  const authUser = sessionStorage.getItem('authUser');
-  if (!authUser) {
-    // Se não tiver a chave 'authUser', joga de volta para o login
+// ─── Verificar autenticação ───────────────────────────────────────────────────
+// Chamada no topo de cada página protegida
+async function verificarAutenticacao() {
+  try {
+    const res = await fetch(`${API_BASE}/auth.php`, {
+      credentials: 'include',
+    });
+    if (!res.ok) {
+      window.location.href = 'login.html';
+    }
+  } catch (e) {
+    // Se o backend não responder, redireciona para login
     window.location.href = 'login.html';
   }
 }
 
-// Função de logout
-function logout() {
+// ─── Logout ───────────────────────────────────────────────────────────────────
+async function logout() {
+  await fetch(`${API_BASE}/auth.php`, {
+    method: 'POST',
+    credentials: 'include',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ acao: 'logout' }),
+  });
   sessionStorage.removeItem('authUser');
   window.location.href = 'login.html';
 }
 
-// Função para verificar se está logado na página de login (para não logar de novo)
-function redirecionarSeLogado() {
-  const authUser = sessionStorage.getItem('authUser');
-  if (authUser) {
-    window.location.href = 'home.html';
+// ─── Redirecionar se já logado (página de login) ──────────────────────────────
+async function redirecionarSeLogado() {
+  try {
+    const res = await fetch(`${API_BASE}/auth.php`, {
+      credentials: 'include',
+    });
+    if (res.ok) {
+      window.location.href = 'home.html';
+    }
+  } catch (e) {
+    // Não está logado, continua na tela de login normalmente
   }
 }
-

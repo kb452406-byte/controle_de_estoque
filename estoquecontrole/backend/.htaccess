@@ -1,0 +1,14 @@
+# Impede listagem de diretórios
+Options -Indexes
+
+# Só permite acesso a arquivos PHP na pasta api/
+<FilesMatch "\.php$">
+    Order Allow,Deny
+    Allow from all
+</FilesMatch>
+
+# Bloqueia acesso direto ao banco de dados SQLite
+<Files "estoque.db">
+    Order Deny,Allow
+    Deny from all
+</Files>
