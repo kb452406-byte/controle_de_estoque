@@ -1,68 +1,79 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <meta charset="UTF-8">
   <title>Meu Estoque</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="./css/home.css">
+  <script src="./js/auth.js"></script>
+  <script>
+    // Protege a rota: redireciona para login se não estiver autenticado
+    verificarAutenticacao();
+  </script>
 </head>
+
 <body>
 
-<div class="container">
+  <div class="container">
 
-  <!-- MENU LATERAL -->
-  <aside class="sidebar">
-    <h2>MEU ESTOQUE</h2>
-    <ul>
-      <li class="active">Meu Estoque</li>
-      <li>Perfumes</li>
-      <li>Indiárias</li>
-      <li>Cestinhas</li>
-      <li>Óleos</li>
-    </ul>
+    <!-- MENU LATERAL -->
+    <aside class="sidebar">
+      <h2>MEU ESTOQUE</h2>
+      <ul>
+        <li class="active">Meu Estoque</li>
+        <li>Perfumes</li>
+        <li>Indiárias</li>
+        <li>Cestinhas</li>
+        <li>Óleos</li>
+      </ul>
 
-    <button class="btn-lateral">+ Novo Perfume</button>
-  </aside>
+      <button class="btn-lateral">+ Novo Perfume</button>
+      <button class="btn-lateral" style="margin-top: 10px; background: #f2c6c6;" onclick="logout()">Sair</button>
+    </aside>
 
-  <!-- CONTEÚDO -->
-  <main class="content">
+    <!-- CONTEÚDO -->
+    <main class="content">
 
-    <!-- BUSCAR PRODUTO  -->
-    <header>
-      <input type="text" placeholder="Buscar..." id="buscar">
-      <h1>MEU ESTOQUE</h1>
-    </header>
+      <!-- BUSCAR PRODUTO  -->
+      <header>
+        <input type="text" placeholder="Buscar..." id="buscar">
+        <h1>MEU ESTOQUE</h1>
+      </header>
 
-    <!-- BOTÕES -->
-    <div class="buttons">
-      <button class="btn verde">Adicionar Perfume</button>
-      <button class="btn rosa">Adicionar Produto</button>
-      <button class="btn bege">Adicionar Item</button>
-    </div>
+      <!-- BOTÕES -->
+      <div class="buttons">
+        <button class="btn verde" id="btn-add-perfume">Adicionar Perfume</button>
+        <button class="btn rosa" id="btn-add-produto">Adicionar Produto</button>
+        <button class="btn bege" id="btn-add-item">Adicionar Item</button>
+      </div>
 
-    <!-- TABELA -->
-    <table>
-      <thead>
-        <tr>
-          <th>Categoria</th>
-          <th>Qtd</th>
-          <th>Tipo</th>
-          <th>Valor</th>
-        </tr>
-      </thead>
-      <tbody id="tabela">
-      </tbody>
-    </table>
+      <!-- TABELA -->
+      <div class="tabela-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Categoria</th>
+              <th>Qtd</th>
+              <th>Tipo</th>
+              <th>Valor</th>
+            </tr>
+          </thead>
+          <tbody id="tabela">
+          </tbody>
+        </table>
+      </div>
 
-    <!-- ANOTAÇÕES
+      <!-- ANOTAÇÕES
     <div class="notas">
       <h3>Anotações Rápidas</h3>
       <textarea placeholder="Escreva aqui..."></textarea>
     </div> -->
 
-  </main>
+    </main>
 
-</div>
+  </div>
 
-<script src="script.js"></script>
+  <script src="./js/script.js"></script>
 </body>
+
 </html>
