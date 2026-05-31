@@ -1,0 +1,31 @@
+.radio-group {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.radio-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border: 1.5px solid #e0dbd2;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  color: #6b6560;
+  background: #fff;
+  transition: all 0.15s;
+  user-select: none;
+}
+
+.radio-pill input {
+  display: none;
+}
+
+.radio-pill:has(input:checked) {
+  border-color: #a8b89a;
+  background: #e8f0e4;
+  color: #4a6e44;
+  font-weight: 500;
+}

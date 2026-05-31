@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Novo Perfume</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+ 
+    body {
+      min-height: 100vh;
+      font-family: 'Jost', sans-serif;
+      background-color: #ece9e2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px 60px;
+    }
+ 
+    .top-bar {
+      width: 100%;
+      max-width: 680px;
+      display: flex;
+      align-items: center;
+      margin-bottom: 28px;
+    }
+ 
+    .btn-back {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      background: none;
+      border: none;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      color: #6b6560;
+      cursor: pointer;
+      padding: 8px 14px;
+      border-radius: 8px;
+      transition: background 0.15s, color 0.15s;
+      text-transform: uppercase;
+    }
+ 
+    .btn-back:hover { background: #e0dbd2; color: #3a3530; }
+ 
+    .btn-back svg { width: 16px; height: 16px; }
+ 
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: #2b2825;
+      margin-bottom: 28px;
+      letter-spacing: 0.02em;
+      text-align: center;
+    }
+ 
+    .card {
+      background: #f7f5f0;
+      border-radius: 14px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+      padding: 40px 44px;
+      width: 100%;
+      max-width: 680px;
+      animation: fadeUp 0.4s ease both;
+    }
+ 
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+ 
+    .section-label {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #9a9389;
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #e0dbd2;
+    }
+ 
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px 20px;
+      margin-bottom: 28px;
+    }
+ 
+    .field { display: flex; flex-direction: column; gap: 6px; }
+    .field.full { grid-column: 1 / -1; }
+ 
+    label {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #6b6560;
+    }
+ 
+    input[type="text"],
+    input[type="number"],
+    select,
+    textarea {
+      padding: 11px 14px;
+      border: 1.5px solid #e0dbd2;
+      border-radius: 9px;
+      background: #fff;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.88rem;
+      color: #2b2825;
+      outline: none;
+      transition: border-color 0.2s;
+      width: 100%;
+    }
+ 
+    input::placeholder,
+    textarea::placeholder { color: #c4bdb4; }
+ 
+    input:focus,
+    select:focus,
+    textarea:focus { border-color: #a8b89a; }
+ 
+    select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23b8b0a6' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+    }
+ 
+    textarea { resize: vertical; min-height: 80px; }
+ 
+    .radio-group { display: flex; gap: 10px; flex-wrap: wrap; }
+ 
+    .radio-pill {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      border: 1.5px solid #e0dbd2;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 0.8rem;
+      color: #6b6560;
+      background: #fff;
+      transition: all 0.15s;
+      user-select: none;
+    }
+ 
+    .radio-pill input { display: none; }
+ 
+    .radio-pill:has(input:checked) {
+      border-color: #a8b89a;
+      background: #e8f0e4;
+      color: #4a6e44;
+      font-weight: 500;
+    }
+ 
+    .actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 8px;
+    }
+ 
+    .btn {
+      flex: 1;
+      padding: 13px;
+      border: none;
+      border-radius: 10px;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      transition: filter 0.15s, transform 0.1s;
+    }
+ 
+    .btn:hover  { filter: brightness(0.92); }
+    .btn:active { transform: scale(0.97); }
+ 
+    .btn-cancel { background: #f0c0c0; color: #7a3535; }
+    .btn-save   { background: #c5d9bb; color: #3a5c34; }
+ 
+    .toast {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #a8b89a;
+      color: #fff;
+      padding: 13px 22px;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.3s;
+      pointer-events: none;
+    }
+ 
+    .toast.show { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+ 
+  <div class="top-bar">
+    <button class="btn-back" onclick="history.back()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="15 18 9 12 15 6"/>
+      </svg>
+      Voltar
+    </button>
+  </div>
+ 
+  <h1>NOVO PERFUME</h1>
+ 
+  <div class="card">
+ 
+    <div class="section-label">Identificação</div>
+    <div class="form-grid">
+      <div class="field full">
+        <label>Nome do Perfume</label>
+        <input type="text" placeholder="Ex: La Nuit Trésor..."/>
+      </div>
+      <div class="field">
+        <label>Marca / Grife</label>
+        <input type="text" placeholder="Ex: Lancôme..."/>
+      </div>
+      <div class="field">
+        <label>Família Olfativa</label>
+        <select>
+          <option value="" disabled selected>Selecione...</option>
+          <option>Floral</option>
+          <option>Oriental</option>
+          <option>Amadeirado</option>
+          <option>Cítrico</option>
+          <option>Aquático</option>
+          <option>Gourmand</option>
+          <option>Chipre</option>
+          <option>Fougère</option>
+        </select>
+      </div>
+    </div>
+ 
+   
+ 
+    <div class="section-label">Estoque & Valor</div>
+    <div class="form-grid">
+      <div class="field">
+        <label>Volume (ml)</label>
+        <input type="number" placeholder="Ex: 100" min="1"/>
+      </div>
+      <div class="field">
+        <label>Quantidade em estoque</label>
+        <input type="number" placeholder="Ex: 5" min="0"/>
+      </div>
+      <div class="field">
+        <label>Valor de Custo (R$)</label>
+        <input type="number" placeholder="0,00" step="0.01" min="0"/>
+      </div>
+      <div class="field">
+        <label>Valor de Venda (R$)</label>
+        <input type="number" placeholder="0,00" step="0.01" min="0"/>
+      </div>
+    </div>
+ 
+    <div class="section-label">Notas & Observações</div>
+    <div class="form-grid">
+      <div class="field">
+        <label>Nota de Topo</label>
+        <input type="text" placeholder="Ex: Bergamota, Limão..."/>
+      </div>
+      <div class="field">
+        <label>Nota de Coração</label>
+        <input type="text" placeholder="Ex: Rosa, Jasmim..."/>
+      </div>
+      <div class="field full">
+        <label>Nota de Fundo</label>
+        <input type="text" placeholder="Ex: Baunilha, Sândalo, Almíscar..."/>
+      </div>
+      <div class="field full">
+        <label>Observações</label>
+        <textarea placeholder="Informações adicionais sobre o perfume..."></textarea>
+      </div>
+    </div>
+ 
+    <div class="actions">
+      <button class="btn btn-cancel" onclick="history.back()">Cancelar</button>
+      <button class="btn btn-save" onclick="salvar()">Salvar Perfume</button>
+    </div>
+ 
+  </div>
+ 
+  <div class="toast" id="toast">✓ Perfume cadastrado com sucesso!</div>
+ 
+  <script>
+    function salvar() {
+      const toast = document.getElementById('toast');
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 3000);
+    }
+  </script>
+</body>
+</html>
