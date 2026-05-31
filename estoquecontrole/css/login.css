@@ -233,7 +233,7 @@ input::placeholder {
 
 .btn {
     flex: 1;
-    min-width: 120px;
+    min-width: 150px;
     padding: 11px 20px;
     border: none;
     border-radius: 8px;
