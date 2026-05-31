@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastro</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Jost:wght@300;400;500&display=swap"
+        rel="stylesheet" />
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            background-color: #ece9e2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Jost', sans-serif;
+            margin: 0;
+        }
+
+        .caixa {
+            padding: 20px;
+            background-color: lightblue;
+            border-radius: 20px;
+        }
+
+        
+
+        .card {
+            background: #f7f5f0;
+            border-radius: 16px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
+            padding: 52px 56px 44px;
+            width: 420px;
+            max-width: 95vw;
+            animation: fadeUp 0.5s ease both;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(18px);
+
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: #2b2825;
+            margin-bottom: 6px;
+        }
+
+        .subtitle {
+            font-size: 0.8rem;
+            color: #9a9389;
+            margin-bottom: 32px;
+            font-weight: 300;
+            letter-spacing: 0.1em;
+        }
+
+        .field {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            font-size: 0.65rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            color: #6b6560;
+            margin-bottom: 7px;
+            text-transform: uppercase;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 13px 16px;
+            border: 1.5px solid #e0dbd2;
+            border-radius: 10px;
+            background: #ffffff;
+            font-family: 'jost', sans-serif;
+            color: #2b2825;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        input::placeholder {
+            color: #c4bdb4;
+        }
+
+        input:focus {
+            border-color: #a8b89a;
+        }
+
+        .row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+
+        }
+
+        checkbox-row {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            margin: 20px 0 24px;
+        }
+
+        .chexhbox-row input[type='checkbox'] {
+            width: 16px;
+            height: 16px;
+            accent-color: #a8b89a;
+            cursor: pointer;
+        }
+
+        .vheckbox-row span {
+            font-size: 0.72rem;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+            color: #6b6560;
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 13px 10px;
+            border: none;
+            border-radius: 10px;
+            font-family: 'Jost', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            transition: filter 0.18s, transform 0.12s;
+        }
+
+        *.btn:hover {filter: brightness(0.93); }
+        .btn:active {transform: scale(0.97); }
+
+        .btn-primary { background: #A8C5A0; }
+        .btn-secondary { background: #E8B4B8;}
+        .btn-tertiary { background: #b8a882; }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 28px;
+            color: #b8b0a6;
+            font-size: 0.72rem;
+            letter-spacing: 0.06em;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #dedad4;
+        }
+     </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Criar conta</h1>
+    <p class="subtitle">Preencha os dados para acessar seu estoque</p>
+ 
+    <div class="row">
+      <div class="field">
+        <label>Nome</label>
+        <input type="text" placeholder="Seu nome..."/>
+      </div>
+      <div class="field">
+        <label>Sobrenome</label>
+        <input type="text" placeholder="Seu sobrenome..."/>
+      </div>
+    </div>
+ 
+    <div class="field">
+      <label>Usuário</label>
+      <input type="text" placeholder="Escolha um usuário..."/>
+    </div>
+ 
+    <div class="field">
+      <label>E-mail</label>
+      <input type="email" placeholder="Digite seu e-mail..."/>
+    </div>
+ 
+    <div class="field">
+      <label>Senha</label>
+      <input type="password" placeholder="Crie uma senha..."/>
+    </div>
+ 
+    <div class="field">
+      <label>Confirmar senha</label>
+      <input type="password" placeholder="Repita a senha..."/>
+    </div>
+ 
+    <div class="checkbox-row">
+      <input type="checkbox" id="termos"/>
+      <label for="termos" style="margin:0; text-transform:uppercase; letter-spacing:0.07em;">
+        <span>Aceito os termos de uso</span>
+      </label>
+    </div>
+ 
+    <div class="actions">
+      <button class="btn btn-secondary">Cancelar</button>
+      <button class="btn btn-primary">Cadastrar</button>
+    </div>
+ 
+    <div class="divider">acesso seguro</div>
+  </div>
+</body>
+</html>
+ 
