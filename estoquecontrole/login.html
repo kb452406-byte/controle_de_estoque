@@ -45,7 +45,7 @@
         <div class="btn-group">
           <button class="btn btn-primary" onclick="handleLogin()">Entrar</button>
           <button class="btn btn-secondary" onclick="handleRegister()">Cadastrar</button>
-          <button class="btn btn-tertiary" onclick="handleGuest()">Visitante</button>
+          
         </div>
 
         <div class="divider">acesso seguro</div>
@@ -73,8 +73,7 @@
         return;
       }
       
-      const success = await login(u, p);
-      if (success) {
+      if (await login(u, p)) {
         showMsg('Entrando no sistema…', 'success');
         setTimeout(() => { window.location.href = 'produtos.html'; }, 800);
       } else {
@@ -83,7 +82,8 @@
     }
 
     function handleRegister() {
-      showMsg('Redireciondo para cadastro…', 'success');
+      showMsg('Redirecionando para cadastro…', 'success');
+      setTimeout(() => { window.location.href = 'cadastro.html'; }, 800);
     }
 
     function handleGuest() {

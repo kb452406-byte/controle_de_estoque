@@ -188,32 +188,32 @@
     <div class="row">
       <div class="field">
         <label>Nome</label>
-        <input type="text" placeholder="Seu nome..."/>
+        <input type="text" id="nome" placeholder="Seu nome..."/>
       </div>
       <div class="field">
         <label>Sobrenome</label>
-        <input type="text" placeholder="Seu sobrenome..."/>
+        <input type="text" id="sobrenome" placeholder="Seu sobrenome..."/>
       </div>
     </div>
  
     <div class="field">
       <label>Usuário</label>
-      <input type="text" placeholder="Escolha um usuário..."/>
+      <input type="text" id="username" placeholder="Escolha um usuário..."/>
     </div>
  
     <div class="field">
       <label>E-mail</label>
-      <input type="email" placeholder="Digite seu e-mail..."/>
+      <input type="email" id="email" placeholder="Digite seu e-mail..."/>
     </div>
  
     <div class="field">
       <label>Senha</label>
-      <input type="password" placeholder="Crie uma senha..."/>
+      <input type="password" id="password" placeholder="Crie uma senha..."/>
     </div>
  
     <div class="field">
       <label>Confirmar senha</label>
-      <input type="password" placeholder="Repita a senha..."/>
+      <input type="password" id="confirm_password" placeholder="Repita a senha..."/>
     </div>
  
     <div class="checkbox-row">
@@ -224,12 +224,13 @@
     </div>
  
     <div class="actions">
-      <button class="btn btn-secondary">Cancelar</button>
-      <button class="btn btn-primary">Cadastrar</button>
+      <button class="btn btn-secondary" onclick="window.location.href='login.html'">Cancelar</button>
+      <button class="btn btn-primary" onclick="cadastrar()">Cadastrar</button>
     </div>
  
     <div class="divider">acesso seguro</div>
   </div>
 </body>
+<script src="js/auth.js"></script>
 </html>
  
